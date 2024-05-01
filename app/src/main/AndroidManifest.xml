@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission
+        android:name="android.permission.WRITE_APN_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- We also ask user to remove any battery optimization constraints during runtime -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Protectress"
+        tools:targetApi="31">
+        <activity
+            android:name=".Vibrate.StoreContact"
+            android:exported="false" />
+        <activity
+            android:name=".Vibrate.StoreContacrt"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.MapSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ContactUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.NavigationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".Vibrate.ReactivateService"
+            android:enabled="true"
+            android:exported="true" /> <!-- register the service -->
+        <service
+            android:name=".Vibrate.SensorService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".Ui.AlertSirenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.SosInstruction"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.Instructions"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.SmsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.MagnoBtnIns"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.MagnoMag"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.MagnoInst"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ChoosenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Retrofit.WebView"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.NewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.FrontMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.SafetyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.HelpLineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".onBoarding.onBoardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.LoginRegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".onBoarding.MainActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCHNzGdjzZYdo2T6EiuQsYu8lJNJHMTLhY" />
+    </application>
+
+</manifest>

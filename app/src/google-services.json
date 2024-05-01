@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "778762122501",
+    "project_id": "protectress-23319",
+    "storage_bucket": "protectress-23319.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778762122501:android:4de7f47e5441510271736c",
+        "android_client_info": {
+          "package_name": "com.example.protectress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUQYNf79j8OwhxIC4eBhxsC9Z6Sbkyqbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

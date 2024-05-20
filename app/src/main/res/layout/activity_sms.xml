@@ -20,9 +20,9 @@
         app:layout_constraintVertical_bias="0.064">
 
         <EditText
+            android:id="@+id/textPhoneNumber1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/textPhoneNumber1"
             android:hint="Enter first Mobile Number"
             tools:layout_editor_absoluteX="2dp"
             tools:layout_editor_absoluteY="3dp" />
@@ -41,59 +41,52 @@
         app:layout_constraintVertical_bias="0.039">
 
         <EditText
+            android:id="@+id/textPhoneNumber2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/textPhoneNumber2"
             android:hint="Enter Second Mobile Number"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/msg"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:id="@+id/msg"
-        app:layout_constraintBottom_toTopOf="@+id/add_to_contact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
-        app:layout_constraintVertical_bias="0.226">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/textMessage"
-            android:hint="Enter text message ">
-
-        </EditText>
-
+            android:hint="message" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/send_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:onClick="send_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg"
+        app:layout_constraintVertical_bias="0.071" />
 
     <Button
         android:id="@+id/add_to_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Add From Contact"
         android:drawableLeft="@drawable/baseline_contact_phone_24"
-        android:text="Add from Contacts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
-        app:layout_constraintVertical_bias="0.193" />
-
-
-    <Button
-        android:id="@+id/Send_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="116dp"
-        android:clickable="true"
-        android:onClick="send_btn"
-        android:text="Send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_to_contact"
-        app:layout_constraintVertical_bias="0.832" />
+        app:layout_constraintTop_toBottomOf="@+id/send_btn"
+        app:layout_constraintVertical_bias="0.628" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,9 @@
     tools:openDrawer="start"
     android:background="@color/white"
     android:id="@+id/drawer_layout"
+    android:outlineSpotShadowColor="@color/white"
     android:backgroundTint="@color/white"
+    android:outlineProvider="bounds"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     tools:context=".Ui.NavigationActivity">
@@ -220,7 +222,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Women News"
+                                android:text="Alert Siren"
                                 android:textColor="?attr/colorOnSurface"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -229,7 +231,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="Aware of kinds of moments"
+                                android:text="Canp play the police siren"
                                 android:textColor="@color/pink"
                                 android:textSize="15sp"
                                 tools:ignore="NestedWeights" />

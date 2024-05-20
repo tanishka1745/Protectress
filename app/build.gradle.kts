@@ -13,9 +13,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -50,11 +50,12 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.google.android.material:material:1.3.0-alpha03")
+    implementation ("com.github.mancj:MaterialSearchBar:0.8.1")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.google.code.gson:gson:2.10.1")
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.android.volley:volley:1.2.1")
+    implementation ("com.google.android.libraries.places:places:1.1.0")
     implementation ("com.hendraanggrian.material:collapsingtoolbarlayout-subtitle:1.5.0")
     implementation("androidx.navigation:navigation-fragment:2.7.6")
     implementation("androidx.navigation:navigation-ui:2.7.6")
@@ -64,4 +65,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    configurations.implementation{
+        exclude("org.jetbrains.kotlin",("kotlin-stdlib-jdk8"))
+    }
 }

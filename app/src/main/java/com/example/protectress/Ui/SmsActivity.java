@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -55,6 +56,7 @@ public class SmsActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,11 +195,7 @@ public class SmsActivity extends AppCompatActivity {
                         Toast.makeText (SmsActivity.this, "Message sent...", Toast.LENGTH_SHORT).show ();
                     }
 
-                    if (!txt_pnumber2.getText ().toString ().equals ("")) {
-                        SmsManager smsManager = SmsManager.getDefault ();
-                        smsManager.sendTextMessage (phoneNumber2, null, Message, null, null);
-                        Toast.makeText (SmsActivity.this, "Message sent...", Toast.LENGTH_SHORT).show ();
-                    }
+
                  else {
                     Toast.makeText (SmsActivity.this, "Please give the phone number first...", Toast.LENGTH_SHORT).show ();
                 }

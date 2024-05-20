@@ -3,6 +3,7 @@
     <style name="Base.Theme.Protectress" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/pink</item>
+        <item name="drawerArrowStyle">@style/DrawerIconStyle</item>
     </style>
 
     <style name="Theme.Protectress" parent="Base.Theme.Protectress" />

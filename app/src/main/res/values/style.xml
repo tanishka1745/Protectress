@@ -7,7 +7,9 @@
     <style name="Toolbar.TitleText" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textColor">@color/white</item>
     </style>
-
+    <style name="DrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
+    </style>
     <style name="Toolbar.TitleText.Collapsed" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/pink</item>

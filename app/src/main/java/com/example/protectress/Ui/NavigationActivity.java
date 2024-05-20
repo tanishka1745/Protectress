@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.protectress.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,7 +42,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     TextView profile_name,profile_email;
     ImageView set_image;
 
-    FirebaseUser firebaseUser;
+
+    FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
@@ -57,22 +60,28 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         navigationView=findViewById(R.id.nav_view);
 
         drawerLayout= findViewById(R.id.drawer_layout);
+        mHeaderView=navigationView.getHeaderView(0);
+        profile_name= (TextView)mHeaderView.findViewById(R.id.profile_name);
+        profile_name.setText("Tanishka");
+        profile_email=(TextView)mHeaderView.findViewById(R.id.profile_email);
+        profile_email.setText("tani1734@gmail.com");
+        database=FirebaseDatabase.getInstance();
+
+
+
+
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) NavigationView navigationView= findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.nav_open,R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        firebaseAuth=FirebaseAuth.getInstance();
 
         profile=findViewById(R.id.profile);
         contact=findViewById(R.id.contact);
         Siren=findViewById(R.id.siren);
         safety_tips=findViewById(R.id.news);
-        mHeaderView=navigationView.getHeaderView(0);
-        profile_name= (TextView)mHeaderView.findViewById(R.id.profile_name);
-        profile_name.setText("Tanishka");
-        profile_email=(TextView)mHeaderView.findViewById(R.id.profile_email);
-        profile_email.setText("tani1734@gmail.com");
         set_image=(ImageView)mHeaderView.findViewById(R.id.profile_set);
         set_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,13 +107,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         Siren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MapSearchActivity.class));
+                startActivity(new Intent(getApplicationContext(), GoogleSearchMap.class));
             }
         });
         safety_tips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), NewsActivity.class));
+                startActivity(new Intent(getApplicationContext(), AlertSirenActivity.class));
             }
         });
 
@@ -172,6 +181,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         else if(id==R.id.contact_us)
         {
             startActivity(new Intent(getApplicationContext(), ContactUsActivity.class));
+        }
+        else{
+            if(id==R.id.logout)
+            {
+                firebaseAuth.signOut();
+                startActivity(new Intent(NavigationActivity.this, LoginRegisterActivity.class));
+                finish();
+            }
         }
         return true;
     }

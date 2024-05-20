@@ -179,22 +179,5 @@
 
 </LinearLayout>
 
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-android:id="@+id/magnetoInst"
-android:layout_width="wrap_content"
-android:layout_height="0dp"
-android:layout_weight="1"
-android:layout_gravity="end"
-android:layout_marginRight="16dp"
-android:layout_marginTop = "8dp"
-android:background="@color/pink"
-android:clickable="true"
-android:focusable="true"
-android:foreground="@drawable/baseline_info_24"
-app:backgroundTint="@color/white"
-app:elevation="6dp"
-tools:ignore="SpeakableTextPresentCheck"
-
-    />
-    </LinearLayout>
+</LinearLayout>
 

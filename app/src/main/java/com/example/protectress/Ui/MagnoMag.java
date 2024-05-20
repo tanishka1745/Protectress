@@ -86,14 +86,8 @@ public class MagnoMag extends AppCompatActivity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_magno_mag);
 
-        FloatingActionButton floatingActionButton=findViewById (R.id.magnetoInst);
-        floatingActionButton.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), MagnoInst.class ) );
 
-            }
-        });
+
         Speed = (Speedometer) findViewById(R.id.speedometer);
         Speed.setLabelConverter(new Speedometer.LabelConverter() {
             @Override

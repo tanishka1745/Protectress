@@ -4,15 +4,18 @@ import android.util.Log;
 
 public class ContactAdd {
 
+
     private static final String TAG = "Contact";
     public String name, phone;
+
+
 
     public ContactAdd() {}
     public ContactAdd(String name, String phone) {
         this.name = name;
         this.phone = phone;
     }
-
+    //getters and setters
     public String getName() {
         return name;
     }

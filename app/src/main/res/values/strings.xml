@@ -190,4 +190,6 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
     <string name="terms">At your request Proctress will watch your movements.We provide the reassurance that if appears things have not gone as planned we will raise the alarm for your.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

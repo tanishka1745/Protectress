@@ -81,7 +81,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                             {
                                 if(firebaseAuth.getCurrentUser().isEmailVerified())
                                 {
-                                    startActivity(new Intent(getApplicationContext(), NavigationActivity.class));
+                                    startActivity(new Intent(getApplicationContext(), HomeActivityClass.class));
                                 }
                                 else{
                                     Toast.makeText(LoginRegisterActivity.this, "Sign Up first", Toast.LENGTH_SHORT).show();

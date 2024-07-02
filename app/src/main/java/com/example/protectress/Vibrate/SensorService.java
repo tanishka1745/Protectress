@@ -1,8 +1,6 @@
 package com.example.protectress.Vibrate;
 
 
-
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -26,6 +24,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -52,17 +51,17 @@ public class SensorService extends Service {
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
 	private ShakeDetector mShakeDetector;
-	FusedLocationProviderClient fusedLocationProviderClient;
 
 	public SensorService() {
 	}
 
+
+	@Nullable
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO: Return the communication channel to the service.
+
 		throw new UnsupportedOperationException("Not yet implemented");
 	}
-
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		super.onStartCommand(intent, flags, startId);
@@ -72,10 +71,8 @@ public class SensorService extends Service {
 
 	@Override
 	public void onCreate() {
-		
-		super.onCreate();
 
-		fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(getBaseContext());
+		super.onCreate();
 
 		// start the foreground service
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -95,10 +92,9 @@ public class SensorService extends Service {
 				// check if the user has shacked
 				// the phone for 3 time in a row
 				if (count == 3) {
-					
+
 					// vibrate the phone
 					vibrate();
-					Toast.makeText(SensorService.this, "Vibrate", Toast.LENGTH_SHORT).show();
 
 					// create FusedLocationProviderClient to get the user location
 					FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
@@ -125,8 +121,12 @@ public class SensorService extends Service {
 							// create different messages
 							if (location != null) {
 
+								//Log.e("myapp","Working");
+								Log.e("location", String.valueOf(location.getLatitude()));
+
 								// get the SMSManager
 								SmsManager smsManager = SmsManager.getDefault();
+								String message = "Hey , I am in danger. This is my location"+"\n"+"http://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();;
 
 								// get the list of all the contacts in Database
 								DbHelper db = new DbHelper(SensorService.this);
@@ -134,11 +134,11 @@ public class SensorService extends Service {
 
 								// send SMS to each contact
 								for (ContactModel c : list) {
-									String message = "Hey, " + c.getName() + "I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n " + "http://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();
+									//message="Hey, " + c.getName() + "I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n " + "http://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();
 									smsManager.sendTextMessage(c.getPhoneNo(), null, message, null, null);
 								}
 							} else {
-								String message = "I am in DANGER, i need help. Please urgently reach me out.\n" + "GPS was turned off.Couldn't find location. Call your nearest Police Station.";
+								String message = "Hey I am in danger, my gps is off";
 								SmsManager smsManager = SmsManager.getDefault();
 								DbHelper db = new DbHelper(SensorService.this);
 								List<ContactModel> list = db.getAllContacts();
@@ -151,7 +151,7 @@ public class SensorService extends Service {
 						@Override
 						public void onFailure(@NonNull Exception e) {
 							Log.d("Check: ", "OnFailure");
-							String message = "I am in DANGER, i need help. Please urgently reach me out.\n" + "GPS was turned off.Couldn't find location. Call your nearest Police Station.";
+							String message = "Hey I am in danger , gps is off";
 							SmsManager smsManager = SmsManager.getDefault();
 							DbHelper db = new DbHelper(SensorService.this);
 							List<ContactModel> list = db.getAllContacts();
@@ -171,10 +171,10 @@ public class SensorService extends Service {
 
 	// method to vibrate the phone
 	public void vibrate() {
-		
+
 		final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		VibrationEffect vibEff;
-		
+
 		// Android Q and above have some predefined vibrating patterns
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
 			vibEff = VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK);
@@ -225,6 +225,5 @@ public class SensorService extends Service {
 		this.sendBroadcast(broadcastIntent);
 		super.onDestroy();
 	}
-
 
 }

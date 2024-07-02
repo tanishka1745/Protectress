@@ -15,6 +15,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,14 +79,15 @@ public class SmsActivity extends AppCompatActivity {
 
 
 
-        // link :- https://google-developer-training.github.io/android-developer-advanced-course-concepts/unit-4-add-geo-features-to-your-apps/lesson-7-location/7-1-c-location-services/7-1-c-location-services.html
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
 
-        //saving data code demo
+
     }
 
     public void send_btn(View view) {
+        //Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show();
         tryIt ();
     }
     public  void tryIt(){
@@ -132,7 +134,12 @@ public class SmsActivity extends AppCompatActivity {
         if (phoneNumber.trim ().isEmpty ()) {
             Toast.makeText (SmsActivity.this, "Please enter first number to make a call..", Toast.LENGTH_SHORT).show ();
 
-        } else {
+        }
+        else if(phoneNumber.length()<11 || phoneNumber.length()>11)
+        {
+            Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+        }
+        else {
 
             intent.setData (Uri.parse ("tel:" + phoneNumber));
         }
@@ -168,10 +175,10 @@ public class SmsActivity extends AppCompatActivity {
                         List<Address> addresses = geocoder.getFromLocation (
                                 location.getLatitude (), location.getLongitude (), 1
                         );
-                        Message += "I am at " + addresses.get (0).getLatitude () +
-                                "," + addresses.get (0).getLongitude () + ", " + addresses.get (0).getCountryName () +
-                                "," + addresses.get (0).getLocality () + ", " + addresses.get (0).getAddressLine (0)+
-                                "http://maps.google.com/?q=";
+                        Message += "I am at " + addresses.get (0).getCountryName () +
+                                "," + addresses.get (0).getLocality () + ", " + addresses.get (0).getAddressLine (0)+ "\n"+
+                                "http://maps.google.com/?q="+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude();
+                        //Log.d("myapp",Message);
 
                     } catch (IOException e) {
                         e.printStackTrace ();
@@ -190,10 +197,17 @@ public class SmsActivity extends AppCompatActivity {
 
                         // SmsManager :- Manages SMS operations such as sending data, text, and pdu SMS messages.
                         // Get this object by calling the static method getDefault().
-                        SmsManager smsManager = SmsManager.getDefault ();
-                        smsManager.sendTextMessage (phoneNumber1, null,Message , null, null);
-                        Toast.makeText (SmsActivity.this, "Message sent...", Toast.LENGTH_SHORT).show ();
+                        SmsManager smsManager = SmsManager.getDefault();
+                        smsManager.sendTextMessage(phoneNumber1, null, Message, null, null);
+                        smsManager.sendTextMessage(phoneNumber2, null, Message, null, null);
+                        Toast.makeText(SmsActivity.this, "Message sent...", Toast.LENGTH_SHORT).show();
                     }
+                if(!txt_pnumber2.getText().toString().equals(""))
+                {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phoneNumber2, null, Message, null, null);
+                }
+
 
 
                  else {

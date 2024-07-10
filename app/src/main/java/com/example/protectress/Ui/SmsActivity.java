@@ -38,7 +38,7 @@ public class SmsActivity extends AppCompatActivity {
 
 
     EditText txt_pnumber1, txt_msg, txt_pnumber2;
-    Button Save,add_to_contact;
+    Button save,add_to_contact;
 
     /**
      * LocationManager :- This class provides access to the system location services.
@@ -75,28 +75,18 @@ public class SmsActivity extends AppCompatActivity {
         txt_pnumber1 = findViewById(R.id.textPhoneNumber1);
         txt_pnumber2 = findViewById(R.id.textPhoneNumber2);
 
-
-
-
-
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-
 
     }
 
     public void send_btn(View view) {
         //Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show();
+
         tryIt ();
     }
     public  void tryIt(){
-        if(!txt_pnumber1.getText ().toString ().trim ().equals ("")) {
-            /**
-             * ContextCompat :- It is a class for replacing some work with base context.
-             * For example if you used before something like getContext().getColor(R.color.black);
-             * Now its deprecated since android 6.0 (API 22+) so you should use: getContext().getColor(R.color.black,theme);
-             */
+
+        if (!txt_pnumber1.getText().toString().trim ().equals ("")) {
             if (ContextCompat.checkSelfPermission (SmsActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                 makeCall ();
             } else {
@@ -175,10 +165,10 @@ public class SmsActivity extends AppCompatActivity {
                         List<Address> addresses = geocoder.getFromLocation (
                                 location.getLatitude (), location.getLongitude (), 1
                         );
-                        Message += "I am at " + addresses.get (0).getCountryName () +
+                        Message += "I am at "+
                                 "," + addresses.get (0).getLocality () + ", " + addresses.get (0).getAddressLine (0)+ "\n"+
                                 "http://maps.google.com/?q="+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude();
-                        //Log.d("myapp",Message);
+                        Log.d("myapp",Message);
 
                     } catch (IOException e) {
                         e.printStackTrace ();

@@ -36,30 +36,18 @@
         <activity
             android:name=".MapSet.MapGoogle"
             android:exported="false" />
-        <activity
-            android:name=".MapSetup.ActivityMap"
-            android:exported="false" />
+
         <activity
             android:name=".Ui.HomeActivityClass"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity
-            android:name=".Ui.GoogleSearchMap"
-            android:exported="true" />
-        <activity
-            android:name=".Vibrate.StoreContact"
-            android:exported="false" />
-        <activity
-            android:name=".Ui.MapSearchActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Ui.ContactUsActivity"
             android:exported="false" />
+        <activity android:name=".Vibrate.StoreContact"/>
+
 
         <receiver
             android:name=".Vibrate.ReactivateService"
@@ -67,27 +55,15 @@
             android:exported="true" /> <!-- register the service -->
         <service
             android:name=".Vibrate.SensorService"
-            android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:enabled="true" />
+
 
         <activity
-            android:name=".Ui.SosInstruction"
-            android:exported="false" />
-        <activity
-            android:name=".Ui.Instructions"
-            android:exported="false" />
-        <activity
             android:name=".Ui.SmsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Ui.ChoosenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Ui.ForgotPassword"
-            android:exported="false" />
-        <activity
-            android:name=".Ui.EditProfile"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
+
         <activity
             android:name=".Ui.FrontMainActivity"
             android:exported="false" />
@@ -97,9 +73,7 @@
         <activity
             android:name=".Ui.HelpLineActivity"
             android:exported="false" />
-        <activity
-            android:name=".onBoarding.onBoardingActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Ui.SignUpActivity"
             android:exported="false" />
@@ -108,7 +82,12 @@
             android:exported="true" />
         <activity
             android:name=".onBoarding.MainActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -26,6 +26,11 @@ Creating an app focused on making women safer can address several critical issue
 ![pro8](https://github.com/user-attachments/assets/4be67891-8597-4127-80c3-dd22bca30e0a)
 
 
+# Authentication
+* Admin Email: tanishkaproject145@gmail.com
+* Password: Tani123@
+
+
 
 # Running From Source
 1.Clone the repository </br>

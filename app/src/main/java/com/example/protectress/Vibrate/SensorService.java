@@ -140,6 +140,7 @@ public class SensorService extends Service {
 							} else {
 								String message = "Hey I am in danger, my gps is off";
 								SmsManager smsManager = SmsManager.getDefault();
+								Log.d("Check: ", "OnFailure");
 								DbHelper db = new DbHelper(SensorService.this);
 								List<ContactModel> list = db.getAllContacts();
 								for (ContactModel c : list) {

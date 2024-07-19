@@ -19,8 +19,11 @@ import android.widget.Toast;
 
 import com.example.protectress.R;
 import com.example.protectress.Ui.FrontMainActivity;
+import com.example.protectress.Ui.HomeActivityClass;
 import com.example.protectress.Ui.LoginRegisterActivity;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private OnBoardingAdapter onBoardingAdapter;
     private LinearLayout layoutBoardingIndicators;
     private Button btn;
+    private FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -57,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 setCurrentOnBoardingIndicator(position);
             }
         });
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser!=null)
+        {
+            startActivity(new Intent(getApplicationContext(), HomeActivityClass.class));
+        }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

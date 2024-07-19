@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/sos_button"
             android:layout_width="100dp"
@@ -107,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Quick Access Of Trusted Contacts"
+                    android:text="Quick Access Of Trusted Contacts in your list"
                     android:textColor="@color/pink"
                     android:textSize="14sp"
                     tools:ignore="NestedWeights" />
@@ -189,7 +189,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Find Place"
+                    android:text="Camera"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -198,7 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Find locations where want to go"
+                    android:text="Send Picture of yours current location."
                     android:textColor="@color/pink"
                     android:textSize="15sp"
                     tools:ignore="NestedWeights" />
@@ -213,4 +213,21 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:id="@+id/logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.828" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

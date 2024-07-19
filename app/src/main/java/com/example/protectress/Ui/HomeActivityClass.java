@@ -5,17 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 
 import com.example.protectress.MapSet.MapGoogle;
 import com.example.protectress.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivityClass extends AppCompatActivity {
 
 
-    LinearLayout helpline,sms,find_place,contact;
+    LinearLayout helpline,sms,camera,contact;
+    Button Logout;
+    FirebaseAuth firebaseAuth;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -25,8 +30,18 @@ public class HomeActivityClass extends AppCompatActivity {
 
         helpline=findViewById(R.id.helpline);
         sms=findViewById(R.id.emergency);
-        find_place=findViewById(R.id.find_place1);
+        camera=findViewById(R.id.find_place1);
         contact=findViewById(R.id.contact_class);
+        Logout=findViewById(R.id.logout);
+        firebaseAuth= FirebaseAuth.getInstance();
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), LoginRegisterActivity.class));
+                finish();
+            }
+        });
 
         helpline.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,10 +61,10 @@ public class HomeActivityClass extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),ContactUsActivity.class));
             }
         });
-        find_place.setOnClickListener(new View.OnClickListener() {
+        camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MapGoogle.class));
+                startActivity(new Intent(getApplicationContext(), CameraActivity.class));
             }
         });
     }

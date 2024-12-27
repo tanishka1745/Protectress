@@ -11,7 +11,7 @@ Creating an app focused on making women safer can address several critical issue
 
   # Demo
 
-  https://youtube.com/shorts/VqAvzTGlRew?si=tzhTB0fDOxtdB1Vw
+ https://www.youtube.com/shorts/P3zoMRTr3Jk
 
   # Technology
 
